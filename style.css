@@ -1,0 +1,13 @@
+.btn2{
+    float:right;
+}
+.cont{
+    width:30em;
+    height: 70em;
+    justify-content: center;
+}
+.cont2{
+    margin:.5em;
+    height: 10em;
+    overflow-y: auto;
+}

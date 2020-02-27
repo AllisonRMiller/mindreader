@@ -2,6 +2,7 @@
 let state = 0;
 //array = 
 //  {content="text"}
+var char = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "?"];
 var header = ["I can read your mind.",
     "Pick a number from 01 - 99",
     "Add both digits together to get a new number",
@@ -16,7 +17,6 @@ var p = ["",
     "Your symbol is"];
 var btnbar = ["Next", "Next", "Next", "Next", "Reveal", " "];
 var cirbtn = ["Go", "R", "R", "R", "R", "R"];
-var char = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "?"];
 //button toggle if state = 0 button invisible else visible
 //button toggle if state = 0 button go else refresh
 
@@ -55,13 +55,14 @@ function btn2Toggle() {
 }
 function build() {
     cont = document.createElement("div");
+    cont2 = document.createElement("div");
     btn2Txt = document.createTextNode(" ");
     btn2 = document.createElement("button")
     pTxt = document.createElement("div");
     btn1Txt = document.createTextNode(" ");
     btn1 = document.createElement("button");
     headerTxt = document.createElement("div");
-    var lb = document.createElement("br");
+
 
     // btn2Txt = document.getElementById("btn2");
     btn2.className = "btn btn-circle";
@@ -75,15 +76,22 @@ function build() {
     
     headerTxt.classList = "h2";
     if(state == 4)
-    {headerTxt.innerHTML=header[state]();}
+        {header[state]();}
+    else if (state == 5)
+        {headerTxt.innerHTML = char[0];}
     else
-    {headerTxt.innerHTML = header[state];}
+        {headerTxt.innerHTML = header[state];}
+
+    cont2.setID = "cont2";
+    cont.classList = "container-flex h-50 w-100 m-1 justify-content-center overflow-y:auto"
 
     cont.setID = "cont1";
-    cont.classList = "container justify-content-center";
+    cont.classList = "container justify-content-center overflow-auto";
 
-    cont.appendChild(headerTxt);
- 
+    cont2.appendChild(headerTxt);
+
+    cont.appendChild(cont2);
+
     if(state>0){
         btn1.appendChild(btn1Txt);
         cont.appendChild(btn1);
@@ -184,9 +192,9 @@ pages();
 // }
 function count() {
     //var list ="";
-    //    shuffle(char);
+    shuffle();
     var table = document.createElement("TABLE");
-    table.classList= "table table-borderless overflow-scroll";
+    table.classList= "table table-responsive table-borderless";
     for (var i = 0; i < 100; i++) {
         var row = table.insertRow(i);
         var cell1 = row.insertCell(0);
@@ -194,9 +202,19 @@ function count() {
         cell1.innerHTML = i;
         cell2.innerHTML = char[i%9];
     }
-    cont.appendChild(table);
+    cont2.appendChild(table);
+}
+function shuffle(){
+    for (let i = char.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i);
+        const temp = char[i];
+        char[i] = char[j];
+        char[j] = temp;
+    }
 }
 
+// Function shuffle derived from example found in https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb as a better solution than the commonly referenced array.sort(function (a, b) { return 0.5 — Math.random() })
+//decrementing the array length on every "run" in order to prevent re-shuffling of already randomized character and creating a placeholder to hold a character that is being returned to the sequence prior to next decrement
 // console.log(count);
 //</br>return list;
 // document.getElementById("btn1").classList.toggle("visible", state > 0 && state < 5);
