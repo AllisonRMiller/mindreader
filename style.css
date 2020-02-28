@@ -2,12 +2,17 @@
     float:right;
 }
 .cont{
-    width:30em;
-    height: 70em;
+    width:30vw;
+    height: 30vh;
     justify-content: center;
 }
 .cont2{
     margin:.5em;
-    height: 10em;
+    height: 30vh;
     overflow-y: auto;
+}
+.table{
+    width:30vw;
+    height:30vh;
+    overflow:auto;
 }

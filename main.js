@@ -1,7 +1,6 @@
-//state = 0
+
 let state = 0;
-//array = 
-//  {content="text"}
+
 var char = ["!", "@", "#", "$", "%", "^", "&", "*", "~", "?"];
 var header = ["I can read your mind.",
     "Pick a number from 01 - 99",
@@ -15,11 +14,6 @@ var p = ["",
     "Ex: 14 - 5 = 9<br>click next to proceed",
     "Find your new number<br> Note the symbol beside your number",
     "Your symbol is"];
-var btnbar = ["Next", "Next", "Next", "Next", "Reveal", " "];
-var cirbtn = ["Go", "R", "R", "R", "R", "R"];
-//button toggle if state = 0 button invisible else visible
-//button toggle if state = 0 button go else refresh
-
 var btn1;
 var btn2;
 var btn2Txt;
@@ -28,7 +22,7 @@ var pTxt;
 var headerTxt;
 var cont;
 var col;
-
+//Toggles the appearance of next button
 function btn1Toggle() {
 
     if (state == 0) {
@@ -44,6 +38,8 @@ function btn1Toggle() {
         btn1.setAttribute = "btn btn-primary d-block";
     }
 }
+
+//Toggles the appearance of reset button
 function btn2Toggle() {
 
     if (state == 0) {
@@ -53,7 +49,10 @@ function btn2Toggle() {
         btn2.innerHTML = "R";
     }
 }
+
+//Builds the webpage
 function build() {
+    //Creates the elements to be displayed 
     cont = document.createElement("div");
     cont2 = document.createElement("div");
     btn2Txt = document.createTextNode(" ");
@@ -64,11 +63,11 @@ function build() {
     headerTxt = document.createElement("div");
 
 
-    // btn2Txt = document.getElementById("btn2");
+    //Sets behavior and defines class for elements to be displayed 
     btn2.className = "btn btn-circle";
     btn2.addEventListener("click", listen2);
  
-    // btn1Txt = document.getElementById("btn1");
+
     btn1.className = "btn btn-primary";
     btn1.addEventListener("click",listen);
 
@@ -88,6 +87,7 @@ function build() {
     cont.setID = "cont1";
     cont.classList = "container justify-content-center overflow-auto";
 
+    //Places elements on the page
     cont2.appendChild(headerTxt);
 
     cont.appendChild(cont2);
@@ -107,12 +107,13 @@ function build() {
     btn2Toggle();
 }
 
-
+//Function to return to first page
 function reset() {
     $("body").empty();
     state = 0;
     pages();
 }
+//advances state on click or resets on click
 function listen2() {
     if (state == 0) {
         advState();
@@ -121,6 +122,8 @@ function listen2() {
         reset();
     }
 }
+
+//advances state on click or resets on click
 function listen() {
     if (state > 0 && state < 5) {
         advState();
@@ -129,30 +132,16 @@ function listen() {
 
 }
 
-
-//document.getElementById("h1"); element.innerHTML = " ";
-
-//switch  ()
-//pages();
-//console.log(pages);
+//Function to advance state
 function advState() {
     $("body").empty();
     state++;
     pages();
 }
-// function showBtn() {
-//     var btn1 = document.getElementById("btn1");
-//     if (state >0 && state < 5) {
-//         btn1.classList.toggle("visible")}
-//         else {
-//             btn1.classList.toggle("invisible")
-//         }
-// }
-// showBtn();
+
+//switch to manage state
 function pages() {
 
-    // document.getElementsByClassName("h2").innerHTML = headerTxt;
-    // document.getElementsByClassName("p").innerHTML = pTxt;
     switch (state) {
         case 0:
             console.log("in state 0 bb")
@@ -180,18 +169,13 @@ function pages() {
             console.log("in state 5")
             break;
     }
-    // document.getElementsByClassName("h2").innerHTML = headerTxt;
-    // document.getElementsByClassName("p").innerHTML = pTxt;
+
 }
 pages();
-// function headerRep() {
-//     document.getElementsByClassName("h2").innerHTML = headerTxt;
-// }
-// function pRep() {
-//     document.getElementsByClassName("p").innerHTML = pTxt;
-// }
+
+//Creates table, populates table
 function count() {
-    //var list ="";
+
     shuffle();
     var table = document.createElement("TABLE");
     table.classList= "table table-responsive table-borderless";
@@ -204,6 +188,8 @@ function count() {
     }
     cont2.appendChild(table);
 }
+
+//Randomizes the characters to be displayed.  See more info below
 function shuffle(){
     for (let i = char.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * i);
@@ -215,40 +201,3 @@ function shuffle(){
 
 // Function shuffle derived from example found in https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb as a better solution than the commonly referenced array.sort(function (a, b) { return 0.5 — Math.random() })
 //decrementing the array length on every "run" in order to prevent re-shuffling of already randomized character and creating a placeholder to hold a character that is being returned to the sequence prior to next decrement
-// console.log(count);
-//</br>return list;
-// document.getElementById("btn1").classList.toggle("visible", state > 0 && state < 5);
-// document.getElementById("btn1").classList.toggle("invisible", state == 0 || state == 5);
-// function ref() {
-//     if (state == 0) {
-//         document.getElementById("btn2").innerHTML = "Go";
-//         }
-//         else {
-//             document.getElementById("btn2").innerHTML = '<i class="fas fa-redo"></i>';
-//         }
-// }
-// ref();
-// console.log(ref);
-//onclick next state ++  
-
-// function reset (){
-//     state=0;
-// }
-// function listen() {
-//     if (state == 0) {
-//            btn2.addEventListener("click", advState);}
-//       else {
-//           btn2.addEventListener("click", reset);
-//   }
-// }
-// function listen2(){
-//     if (state > 0 && state < 5){
-//         btn1.addEventListener("click", advState);}
-//         else {btn1.addEventListener("click", reset); }
-
-// }
-// listen();
-// listen2();
-// console.log(listen);
-
-// console.log(advstate);
