@@ -85,7 +85,7 @@ function build() {
     cont.classList = "container-flex h-50 w-100 m-1 justify-content-center overflow-y:auto"
 
     cont.setID = "cont1";
-    cont.classList = "container justify-content-center overflow-auto";
+    cont.classList = "container justify-content-center overflow-auto bg-light";
 
     //Places elements on the page
     cont2.appendChild(headerTxt);
