@@ -1,7 +1,7 @@
 .btn2{
     float:right;
 }
-.cont{
+.cont1{
     width:30vw;
     height: 30vh;
     justify-content: center;
@@ -9,7 +9,6 @@
 .cont2{
     margin:.5em;
     height: 30vh;
-    overflow-y: auto;
 }
 .table{
     width:30vw;
